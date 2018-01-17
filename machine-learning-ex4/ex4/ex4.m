@@ -39,12 +39,10 @@ m = size(X, 1);
 sel = randperm(size(X, 1));
 sel = sel(1:100);
 
-displayData(X(sel, :));
+%displayData(X(sel, :));
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
-
-
 %% ================ Part 2: Loading Parameters ================
 % In this part of the exercise, we load some pre-initialized 
 % neural network parameters.
@@ -101,8 +99,6 @@ fprintf(['Cost at parameters (loaded from ex4weights): %f '...
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
-
-
 %% ================ Part 5: Sigmoid Gradient  ================
 %  Before you start implementing the neural network, you will first
 %  implement the gradient for the sigmoid function. You should complete the
@@ -133,8 +129,6 @@ initial_Theta2 = randInitializeWeights(hidden_layer_size, num_labels);
 
 % Unroll parameters
 initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
-
-
 %% =============== Part 7: Implement Backpropagation ===============
 %  Once your cost matches up with ours, you should proceed to implement the
 %  backpropagation algorithm for the neural network. You should add to the
@@ -230,5 +224,3 @@ pause;
 pred = predict(Theta1, Theta2, X);
 
 fprintf('\nTraining Set Accuracy: %f\n', mean(double(pred == y)) * 100);
-
-
