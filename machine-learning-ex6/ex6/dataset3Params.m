@@ -24,7 +24,37 @@ sigma = 0.3;
 %
 
 
+smallest_error=1000000;
 
+c_list = [0.01; 0.03; 0.1; 0.3; 1; 3; 10; 30];
+
+s_list = c_list;
+
+  for c = 1:length(c_list)
+
+    for s = 1:length(s_list)
+
+        disp(sprintf('iteration %d/%d',s+length(c_list)*(c-1),length(c_list)*length(s_list)))
+        
+        model  = svmTrain(X, y, c_list(c), @(x1, x2) gaussianKernel(x1,x2,s_list(s)));
+
+        predictions = svmPredict(model, Xval);
+
+        error = mean(double(predictions ~= yval));
+
+        if error < smallest_error
+
+           smallest_error = error;
+
+           C = c_list(c);
+
+           sigma = s_list(s);
+
+        end
+
+        end
+
+    end
 
 
 
