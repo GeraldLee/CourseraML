@@ -22,8 +22,16 @@ idx = zeros(size(X,1), 1);
 %
 
 
-
-
+for point = 1:size(X,1)
+  min = 10000;
+  for iter = 1:K
+    dist = sum((X(point,:) - centroids(iter,:)).^2);
+    if min >= dist
+      min = dist;
+      idx(point) = iter;
+    end
+  end
+end
 
 
 
